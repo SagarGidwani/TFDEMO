@@ -8,7 +8,7 @@ terraform {
 }
 
 provider "aws" {
-  region = "ap-south-1"
+  region = var.region
 }
 
 
@@ -23,8 +23,8 @@ module "myserver-subnet"{
   source = "./modules/subnet"
   vpc_id = aws_vpc.ownvpc.id
   subnet_cidr_block = var.subnet_cidr_block
+  az = var.az
   env = var.env
-
 }
 
 module "myserver-ec2"{
